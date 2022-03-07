@@ -23,12 +23,21 @@ function Navigation({ isLoaded }){
   }
 
   return (
-    <ul>
-      <li>
-        <NavLink exact to="/">Home</NavLink>
-        {isLoaded && sessionLinks}
-      </li>
-    </ul>
+    <>
+      <div id='nav-cont'>
+        <a href='/'>
+          <img src='https://identity.flickr.com/img/flickr_logo_dots.3c6f3e13.svg'></img>
+        </a>
+        <div id="nav-bar">
+          <ul>
+            <li>
+              <NavLink exact to="/">Home</NavLink>
+              {isLoaded && sessionLinks}
+            </li>
+          </ul>
+        </div>
+      </div>  
+    </>
   );
 }
 

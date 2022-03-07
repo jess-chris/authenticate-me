@@ -11,12 +11,28 @@ router.use('/session', sessionRouter);
 
 router.use('/users', usersRouter);
 
-router.post('/test', function(req, res) {
+
+
+
+router.get('/images', asyncHandler(async (req, res) => {
   res.json({ requestBody: req.body });
-});
+  console.log("IMAGES ROUTE");
+
+}));
 
 
 
+router.get('/images/:id', asyncHandler(async (req, res) => {
+  res.json({ requestBody: req.body });
+  console.log("IMAGE ID ROUTE");
+  
+}));
+
+
+router.post('/images', asyncHandler(async (req, res) => {
+
+  res.json({ requestBody: "POST OKAY"});
+}));
 
 
 module.exports = router;

@@ -1,19 +1,35 @@
-form {
-  margin: 0 40px;
-  width: 300px;
+#signup-card {
+  
+  display: block;
+  width: 22rem;
+  border: 1px solid black;
+
+
+}
+
+h6 {
+  font-weight: 400;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+
+
+#signup-form {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 15px;
-  
-  border: 1px solid black;
-  border-radius: 25px;
 
-  padding-bottom: 10px;
 }
 
 input {
-  width: 100%;
-  display: flex;
+  height: 3.5rem;
+}
+
+#signup-btn {
+  background-color: #128fdc;
+}
+
+label {
+  margin-bottom: 0.5rem;
 }

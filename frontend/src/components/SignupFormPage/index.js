@@ -2,14 +2,15 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
+import './SignupForm.css';
 
 function SignupFormPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [email, setEmail] = useState("Email");
+  const [username, setUsername] = useState("Username");
+  const [password, setPassword] = useState("Password");
+  const [confirmPassword, setConfirmPassword] = useState("Confirm Password");
   const [errors, setErrors] = useState([]);
 
   if (sessionUser) return <Redirect to="/" />;
@@ -28,47 +29,53 @@ function SignupFormPage() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form id="signup-form" onSubmit={handleSubmit}>
+      <h6>Sign up for Flimg</h6>
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
+
       <label>
-        Email
         <input
           type="text"
           value={email}
+          onFocus={(e) => {if(e.target.value === "Email") e.target.value = ""}}
+          onBlur={(e) => {if(e.target.value === "") e.target.value = "Email"}}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
       </label>
       <label>
-        Username
         <input
           type="text"
           value={username}
+          onFocus={(e) => {if(e.target.value === "Username") e.target.value = ""}}
+          onBlur={(e) => {if(e.target.value === "") e.target.value = "Username"}}
           onChange={(e) => setUsername(e.target.value)}
           required
         />
       </label>
       <label>
-        Password
         <input
-          type="password"
+          type={password === "Password" ? "text" : "password"}
           value={password}
+          onFocus={(e) => {if(e.target.value === "Password") e.target.value = ""}}
+          onBlur={(e) => {if(e.target.value === "") e.target.value = "Password"}}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
       </label>
       <label>
-        Confirm Password
         <input
-          type="password"
+          type={confirmPassword === "Confirm Password" ? "text" : "password"}
           value={confirmPassword}
+          onFocus={(e) => {if(e.target.value === "Confirm Password") e.target.value = "" }}
+          onBlur={(e) => {if(e.target.value === "") e.target.value = "Confirm Password"}}
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
         />
       </label>
-      <button type="submit">Sign Up</button>
+      <button id="signup-btn" type="submit">Sign Up</button>
     </form>
   );
 }
