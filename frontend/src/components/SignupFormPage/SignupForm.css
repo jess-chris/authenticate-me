@@ -22,7 +22,7 @@ h6 {
 
 }
 
-input {
+#signup-form > label > input {
   height: 3.5rem;
 }
 

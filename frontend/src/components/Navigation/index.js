@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
@@ -8,6 +8,7 @@ import './Navigation.css';
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
 
+  
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
@@ -29,14 +30,15 @@ function Navigation({ isLoaded }){
     <>
       <div id='nav-cont'>
         <a href='/'>
-          <img src='https://identity.flickr.com/img/flickr_logo_dots.3c6f3e13.svg'></img>
+          <img src='../../includes/flimg-logo.svg'></img>
         </a>
+        <div id='search-bar'>
+          <input type="search"></input>
+          <button>Search</button>
+        </div>
         <div id="nav-bar">
           <ul>
             <li>
-              <button>
-                <NavLink exact to="/">Home</NavLink>
-              </button>
               {isLoaded && sessionLinks}
             </li>
           </ul>

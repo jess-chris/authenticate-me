@@ -1,0 +1,27 @@
+#root {
+  /* background-image: none;  */
+}
+
+#nav-cont {
+   background: rgba(21,21,23,.95); 
+}
+
+
+.main-content > ul {
+  padding-top: 20px;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 5px;
+}
+
+.gallery-view {
+  /* width: 100%;
+  display: flex;
+  flex-flow: row wrap; */
+}
+
+.main-content > ul > li > a > img {
+  object-fit: cover;
+  height: 250px;
+  width: 300px;
+}

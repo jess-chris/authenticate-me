@@ -5,31 +5,33 @@
   margin: 0;
 }
 
-/* html, body {
-  height: 100%;
-  
-} */
+.fix-height {
+  min-height: calc(100vh - 6rem);
+}
 
  #root {
   display: block;
 
+} 
+
+.splash-cont {
   background-image: url('https://cdn.pixabay.com/photo/2020/06/01/22/23/eyes-5248678_960_720.jpg');
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: cover;
-} 
+}
+
 
 ul {
   list-style-type: none;
 }
 
-.main-content {
+.splash {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: calc(100vh - 6rem);
   width: 100%;
-
   
 }
 
