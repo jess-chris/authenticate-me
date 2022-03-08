@@ -1,10 +1,9 @@
 #signup-card {
   
-  display: block;
-  width: 22rem;
-  border: 1px solid black;
-
-
+  display: flex;
+  justify-content: center;
+  
+  background-image: url('../../../public/includes/auth-bg.jpg');
 }
 
 h6 {
@@ -19,7 +18,24 @@ h6 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  align-self: center;
 
+
+  width: 22rem;
+  border: 1px solid black;
+  background-color: #fff;
+
+  padding: 1.5rem;
+  border-radius: 0.25rem;
+  color: #212124;
+
+}
+
+#signup-form > label > input:focus-visible {
+  outline: none;
+  border: 1px solid #b3d4fc;
+  color: #000;
+  text-shadow: none;
 }
 
 #signup-form > label > input {
@@ -27,6 +43,7 @@ h6 {
 }
 
 #signup-btn {
+  border: none;
   background-color: #128fdc;
 }
 

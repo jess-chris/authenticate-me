@@ -6,6 +6,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import MainContent from "./components/MainContent";
+import NavBar from "./components/NavBar";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,33 +23,39 @@ function App() {
   return (
     <>
       {!sessionUser && (
-        <div className="splash-cont">
-          <Navigation isLoaded={isLoaded} />
-          <div className="splash">
-            <Switch>
-              <Route exact path="/">
+        <Switch>
+          <Route exact path="/">
+            <div className="splash-cont">
+              <Navigation isLoaded={isLoaded} />
+              <div className="splash">
                 <div id="bg-text-content">
                   <h1>Find your inspiration.</h1>
                   <h3>Join the Flimg community, home to tens of billions of photos and 2 million groups.</h3>
-                  <button id="fp-signup-btn">Start for free</button>
+                  <a href="/signup">
+                    <button id="fp-signup-btn">Start for free</button>
+                  </a>
                 </div>
-              </Route>
-              <Route path="/signup">
-                <div id="signup-card">
-                  <SignupFormPage />
-                </div>
-              </Route>
-            </Switch>
-          </div>
-        </div>
+              </div>
+            </div>
+          </Route>
+          <Route path="/signup">
+            <NavBar sessionUser={sessionUser} />
+            <div className="fix-height" id="signup-card">
+              <SignupFormPage />
+            </div>
+          </Route>
+        </Switch>
       )}
+
       {sessionUser && (
-        <>
-          <Navigation isLoaded={isLoaded} />
-          <div className="main-content fix-height">
-            <MainContent />
-          </div>
-        </>
+        <Switch>
+          <Route exact path="/">
+            <NavBar sessionUser={sessionUser}/>
+            <div className="main-content fix-height">
+              <MainContent />
+            </div>
+          </Route>
+        </Switch>
       )}
       <Footer />
     </>

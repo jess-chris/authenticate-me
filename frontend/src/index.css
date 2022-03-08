@@ -54,7 +54,7 @@ ul {
   font-weight: 600;
 }
 
-#bg-text-content > button {
+#bg-text-content > a > button {
   border: none;
 
   height: 64px;
