@@ -1,0 +1,9 @@
+#footer {
+  display: flex;
+  flex-direction: row;
+  height: 3rem;
+  bottom: 0;
+  background-color: #000;
+  color: hsla(0,0%,100%,.6);
+
+}
