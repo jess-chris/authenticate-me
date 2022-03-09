@@ -23,7 +23,7 @@ function App() {
 
   return (
     <>
-      {!sessionUser && (
+      {!sessionUser && isLoaded && (
         <Switch>
           <Route exact path="/">
             <div className="splash-cont">
