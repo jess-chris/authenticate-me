@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import MainContent from "./components/MainContent";
 import NavBar from "./components/NavBar";
 import UploadImage from "./components/UploadImage";
+import SingleImage from "./components/SingleImage";
 
 function App() {
   const dispatch = useDispatch();
@@ -64,6 +65,12 @@ function App() {
               <UploadImage sessionUser={sessionUser}/>
             </div>
           </Route>
+
+          <Route path='/images/:id'>
+            <NavBar sessionUser={sessionUser}/>
+            <SingleImage sessionUser={sessionUser}/>
+          </Route>
+
         </Switch>
       )}
 

@@ -4,6 +4,8 @@ import { csrfFetch } from "./csrf";
 const LOAD_IMAGES = 'images/loadImages';
 const ADD_IMAGE = 'images/addImage';
 
+
+
 export const loadImages = (images) => {
 
   return { type: LOAD_IMAGES, images }
@@ -17,12 +19,12 @@ export const addImage = (newImage) => ({
 
 
 
+
+
 export const fetchImages = () => async dispatch => {
 
   const res = await fetch('/api/images');
   const images = await res.json();
-  
-  //console.log(images);
 
   dispatch(loadImages(images));
   return images;
@@ -42,6 +44,41 @@ export const postImage = (data) => async dispatch => {
 
   dispatch(addImage(newImage));
   return newImage;
+};
+
+
+export const updateImage = (data) => async dispatch => {
+
+
+  const res = await csrfFetch('/api/images', {
+    method: "PUT",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify(data)
+  });
+
+  const newImage = await res.json();
+
+
+  dispatch(addImage(newImage));
+  return newImage;
+};
+
+
+export const deleteImage = (data) => async dispatch => {
+
+
+  const res = await csrfFetch(`/api/images/${data}`, {
+    method: "DELETE",
+    headers: {"Content-Type":"application/json"},
+  });
+
+  const deletedImage = await res.json();
+
+  
+  // dispatch(loadImages());
+
+  return await deletedImage;
+
 };
 
 

@@ -1,14 +1,13 @@
 const router = require('express').Router();
 
 const asyncHandler = require('express-async-handler');
-const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth.js');
+// const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth.js');
 const { User, Image } = require('../../db/models');
 
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 
 router.use('/session', sessionRouter);
-
 router.use('/users', usersRouter);
 
 
@@ -26,6 +25,8 @@ router.get('/images', asyncHandler(async (req, res) => {
 
 
 router.get('/images/:id(\\d+)', asyncHandler(async (req, res) => {
+
+
   const { id } = req.params;
 
   const image = await Image.findByPk(id);
@@ -50,15 +51,28 @@ router.post('/images', asyncHandler(async (req, res, next) => {
 }));
 
 
-router.put('/images/:id(\\d+)', asyncHandler(async (req, res) => {
+router.put('/images', asyncHandler(async (req, res) => {
 
-  res.json({ requestBody: "PUT OKAY"});
+  const {id, imageUrl, content, userId} = req.body;
+
+  const image = await Image.findByPk(id);
+  image.imageUrl = imageUrl;
+  image.content = content;
+  await image.save();
+
+  res.json({ requestBody: "OK", image: image});
+
 }));
 
 
 router.delete('/images/:id(\\d+)', asyncHandler(async (req, res) => {
 
-  res.json({ requestBody: "DELETE OKAY"});
+  const { id } = req.params;
+
+  const image = await Image.findByPk(id);
+  await image.destroy();
+
+  res.json({ requestBody: "OK"});
 }));
 
 module.exports = router;

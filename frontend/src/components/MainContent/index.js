@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, Route, Switch } from "react-router-dom";
-import './MainContent.css';
+import { NavLink } from "react-router-dom";
+
 import { fetchImages } from '../../store/imageReducer';
 
+import './MainContent.css';
 
 function MainContent() {
   const dispatch = useDispatch();
@@ -11,7 +12,7 @@ function MainContent() {
   const imagesObject = useSelector((state) => state.imageState.entries);
   const images = Object.values(imagesObject);
 
-  console.log(images);
+  console.log(images)
 
   useEffect(() => {
 
@@ -19,15 +20,17 @@ function MainContent() {
   }, [dispatch]);
 
   return (
+
     <ul>
-      {images.map(({ id, imageUrl}) => (
+      {images.map(({ id, imageUrl, content, userId}) => (
         <li key={id}>
-          <NavLink to={`/images/${id}`}>
+          <NavLink to={{pathname: `/images/${id}`, state:{id, imageUrl, content, userId}}}>
             <img id={id} src={imageUrl}></img>
           </NavLink>
         </li>
       ))}
     </ul>
+
   );
 };
 
