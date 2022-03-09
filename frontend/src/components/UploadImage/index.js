@@ -35,6 +35,8 @@ function UploadImage({ sessionUser }) {
     <form id="new-image-form" onSubmit={handleSubmit}>
       <p>Testing</p>
 
+      
+
       <label>Image Url: 
         <input
           type="text"

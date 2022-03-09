@@ -35,7 +35,7 @@ router.get('/images/:id(\\d+)', asyncHandler(async (req, res) => {
 }));
 
 
-router.post('/images', asyncHandler(async (req, res) => {
+router.post('/images', asyncHandler(async (req, res, next) => {
 
   const { imageUrl, content, albumId, id} = req.body;
 

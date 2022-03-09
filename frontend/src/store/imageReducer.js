@@ -1,3 +1,6 @@
+import { csrfFetch } from "./csrf";
+
+
 const LOAD_IMAGES = 'images/loadImages';
 const ADD_IMAGE = 'images/addImage';
 
@@ -28,7 +31,8 @@ export const fetchImages = () => async dispatch => {
 
 export const postImage = (data) => async dispatch => {
 
-  const res = await fetch('/api/images', {
+
+  const res = await csrfFetch('/api/images', {
     method: "POST",
     headers: {"Content-Type":"application/json"},
     body: JSON.stringify(data)
