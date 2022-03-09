@@ -4,6 +4,8 @@
   justify-content: center;
   
   background-image: url('../../../public/includes/auth-bg.jpg');
+  background-position: bottom;
+  background-size: cover;
 }
 
 h6 {
@@ -22,7 +24,7 @@ h6 {
 
 
   width: 22rem;
-  border: 1px solid black;
+
   background-color: #fff;
 
   padding: 1.5rem;
@@ -49,4 +51,11 @@ h6 {
 
 label {
   margin-bottom: 0.5rem;
+}
+
+#cc-text {
+  bottom: 4.5rem;
+  right: 1.5rem;
+  position: absolute;
+  color: #a7a7a7;
 }

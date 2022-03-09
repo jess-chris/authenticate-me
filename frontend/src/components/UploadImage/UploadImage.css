@@ -1,0 +1,26 @@
+#new-image-card {
+  display: flex;
+  justify-content: center;
+  
+}
+
+#new-image-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  align-self: center; 
+ 
+
+  width: 22rem;
+
+  background-color: #fff;
+
+  padding: 1.5rem;
+  border-radius: 0.25rem;
+  color: #212124;
+
+}
+
+#new-image-form > label {
+
+}

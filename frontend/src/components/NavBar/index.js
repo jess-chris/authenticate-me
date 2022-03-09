@@ -9,8 +9,11 @@ function NavBar({ sessionUser }) {
   let sessionLinks; 
   
   if(sessionUser) {
-   sessionLinks = ( 
-   <ProfileButton user={sessionUser} /> 
+   sessionLinks = (
+    <>
+      <button><NavLink to="/images/new">Upload</NavLink></button>
+      <ProfileButton user={sessionUser} /> 
+    </>
    );
   }
 

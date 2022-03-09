@@ -7,6 +7,7 @@ import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import MainContent from "./components/MainContent";
 import NavBar from "./components/NavBar";
+import UploadImage from "./components/UploadImage";
 
 function App() {
   const dispatch = useDispatch();
@@ -49,14 +50,23 @@ function App() {
 
       {sessionUser && (
         <Switch>
+
           <Route exact path="/">
             <NavBar sessionUser={sessionUser}/>
             <div className="main-content fix-height">
               <MainContent />
             </div>
           </Route>
+
+          <Route path="/images/new">
+            <NavBar sessionUser={sessionUser}/>
+            <div className="fix-height" id="new-image-card">
+              <UploadImage sessionUser={sessionUser}/>
+            </div>
+          </Route>
         </Switch>
       )}
+
       <Footer />
     </>
   );
