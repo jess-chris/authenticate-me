@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="204"
+   height="45"
+   viewBox="0 0 204 45"
+   version="1.1"
+   id="svg31"
+   sodipodi:docname="flickr_logo_dots.3c6f3e13-v2.svg"
+   inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs35">
+    <linearGradient
+       id="linearGradient23974"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop23972" />
+    </linearGradient>
+    <rect
+       x="112.21793"
+       y="11.831283"
+       width="76.843585"
+       height="49.11775"
+       id="rect53167" />
+    <rect
+       x="54.973638"
+       y="-5.6168717"
+       width="156.07733"
+       height="63.339192"
+       id="rect30946" />
+    <rect
+       x="57.841828"
+       y="-0.11950791"
+       width="146.99473"
+       height="44.934974"
+       id="rect15734" />
+    <font
+       horiz-adv-x="1024"
+       id="font7256"
+       inkscape:label="font 1">
+      <font-face
+         units-per-em="1024"
+         id="font-face7258"
+         font-family="SVGFont 1" />
+      <missing-glyph
+         d="M0,0h1000v1024h-1000z"
+         id="missing-glyph7260" />
+    </font>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient23974"
+       id="linearGradient23976"
+       x1="47.299664"
+       y1="26.272475"
+       x2="141.28454"
+       y2="26.272475"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <sodipodi:namedview
+     id="namedview33"
+     pagecolor="#000000"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="8.3676471"
+     inkscape:cx="89.451669"
+     inkscape:cy="18.523726"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g29" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer1"
+     inkscape:label="Layer 1" />
+  <g
+     fill="none"
+     fill-rule="evenodd"
+     id="g29"
+     transform="translate(0.35852371,0.23901582)">
+    <path
+       fill="#ff0084"
+       d="m 35,32.9999 c 5.523,0 10,-4.477 10,-10 0,-5.522 -4.477,-10 -10,-10 -5.523,0 -10,4.478 -10,10 0,5.523 4.477,10 10,10"
+       id="path23" />
+    <path
+       fill="#0063dc"
+       d="m 10,32.9999 c 5.523,0 10,-4.477 10,-10 0,-5.522 -4.477,-10 -10,-10 -5.523,0 -10,4.478 -10,10 0,5.523 4.477,10 10,10"
+       id="path25" />
+    <text
+       xml:space="preserve"
+       transform="translate(-0.358524, -0.239016)"
+       id="text15732"
+       style="fill:black;fill-opacity:1;line-height:1.25;stroke:none;font-family:sans-serif;font-style:normal;font-weight:normal;font-size:40px;white-space:pre;shape-inside:url(#rect15734)" />
+    <g
+       transform="translate(-0.358524, -0.239016)"
+       id="text30944"
+       style="font-size:40px;white-space:pre;fill:#000000" />
+    <text
+       xml:space="preserve"
+       transform="translate(-0.35852371,-0.23901582)"
+       id="text53165"
+       style="fill:black;fill-opacity:1;line-height:1.25;stroke:none;font-family:sans-serif;font-style:normal;font-weight:normal;font-size:40px;white-space:pre;shape-inside:url(#rect53167)" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:45.5463px;line-height:1.25;font-family:'Proxima Nova';-inkscape-font-specification:'Proxima Nova, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;mix-blend-mode:normal;fill:#ffffff;fill-opacity:1;stroke:#fdfdfd;stroke-width:1.70799998;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       x="47.424923"
+       y="37.22636"
+       id="text21074"
+       transform="scale(1.054869,0.94798503)"><tspan
+         sodipodi:role="line"
+         id="tspan21072"
+         x="47.424923"
+         y="37.22636"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:45.5463px;font-family:'Proxima Nova';-inkscape-font-specification:'Proxima Nova, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;fill-opacity:1;stroke:#fdfdfd;stroke-width:1.70799998;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">flimg</tspan></text>
+  </g>
+</svg>

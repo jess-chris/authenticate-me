@@ -35,12 +35,9 @@ router.get('/images/:id(\\d+)', asyncHandler(async (req, res) => {
 }));
 
 
-router.post('/images', requireAuth, asyncHandler(async (req, res) => {
+router.post('/images', asyncHandler(async (req, res) => {
 
-  const { imageUrl, content, albumId} = req.body;
-  const { id } = req.user.dataValues;
-  console.log(id)
-  console.log(albumId)
+  const { imageUrl, content, albumId, id} = req.body;
 
   const image = await Image.create({
     userId: id,

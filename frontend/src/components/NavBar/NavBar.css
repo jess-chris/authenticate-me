@@ -1,4 +1,4 @@
-#splash-nav-cont {
+#main-nav-cont {
   display: flex;
   flex-direction: row;
   height: 3rem;
@@ -9,28 +9,15 @@
 
 
   max-width: none!important;
-  background: rgba(0,0,0,.25);
+  background: rgba(21,21,23,.95); 
 
 
   justify-content: space-between;
   align-items: center;
 }
 
-#splash-search-bar {
+#search-bar {
   display: flex;
   width: 350px;
 
-}
-
-
-#splash-nav-bar > button {
-  border: none;
-  height: 32px;
-  line-height: 32px;
-  min-width: 80px;
-
-}
-
-a {
-  text-decoration: none;
 }

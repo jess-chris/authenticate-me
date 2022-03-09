@@ -1,0 +1,15 @@
+
+
+.main-content > ul {
+  padding-top: 20px;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 5px;
+}
+
+
+.main-content > ul > li > a > img {
+  object-fit: cover;
+  height: 250px;
+  width: 300px;
+}
