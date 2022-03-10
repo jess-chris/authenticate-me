@@ -12,8 +12,6 @@ function MainContent() {
   const imagesObject = useSelector((state) => state.imageState.entries);
   const images = Object.values(imagesObject);
 
-  console.log(images)
-
   useEffect(() => {
 
     dispatch(fetchImages());

@@ -7,9 +7,9 @@ import './SignupForm.css';
 function SignupFormPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const [email, setEmail] = useState("Email");
-  const [username, setUsername] = useState("Username");
-  const [password, setPassword] = useState("Password");
+  const [email, setEmail] = useState("Enter Email");
+  const [username, setUsername] = useState("Enter Username");
+  const [password, setPassword] = useState("Enter Password");
   const [confirmPassword, setConfirmPassword] = useState("Confirm Password");
   const [errors, setErrors] = useState([]);
 
@@ -41,9 +41,10 @@ function SignupFormPage() {
           <input
             type="text"
             value={email}
-            onFocus={(e) => {if(e.target.value === "Email") e.target.value = ""}}
-            onBlur={(e) => {if(e.target.value === "") e.target.value = "Email"}}
+            onFocus={(e) => {if(e.target.value === "Enter Email") e.target.value = ""}}
+            onBlur={(e) => {if(e.target.value === "") e.target.value = "Enter Email"}}
             onChange={(e) => setEmail(e.target.value)}
+            size="50"
             required
           />
         </label>
@@ -51,19 +52,21 @@ function SignupFormPage() {
           <input
             type="text"
             value={username}
-            onFocus={(e) => {if(e.target.value === "Username") e.target.value = ""}}
-            onBlur={(e) => {if(e.target.value === "") e.target.value = "Username"}}
+            onFocus={(e) => {if(e.target.value === "Enter Username") e.target.value = ""}}
+            onBlur={(e) => {if(e.target.value === "") e.target.value = "Enter Username"}}
             onChange={(e) => setUsername(e.target.value)}
+            size="50"
             required
           />
         </label>
         <label>
           <input
-            type={password === "Password" ? "text" : "password"}
+            type={password === "Enter Password" ? "text" : "password"}
             value={password}
-            onFocus={(e) => {if(e.target.value === "Password") e.target.value = ""}}
-            onBlur={(e) => {if(e.target.value === "") e.target.value = "Password"}}
+            onFocus={(e) => {if(e.target.value === "Enter Password") e.target.value = ""}}
+            onBlur={(e) => {if(e.target.value === "") e.target.value = "Enter Password"}}
             onChange={(e) => setPassword(e.target.value)}
+            size="50"
             required
           />
         </label>
@@ -74,11 +77,35 @@ function SignupFormPage() {
             onFocus={(e) => {if(e.target.value === "Confirm Password") e.target.value = "" }}
             onBlur={(e) => {if(e.target.value === "") e.target.value = "Confirm Password"}}
             onChange={(e) => setConfirmPassword(e.target.value)}
+            size="50"
             required
           />
         </label>
         <button id="signup-btn" type="submit">Sign Up</button>
+
+        <span>
+          By signing up, you agree with Flimg's
+          <a href=""> Terms of Services </a>
+          and
+          <a href=""> Privacy Policy.</a>
+        </span>
+
+        <div id="line-sep"></div>
+
+        <p>Already a Flimg member?
+          <a href="/login"> Log in here.</a>
+        </p>
       </form>
+      {/* <div id="under-form-links">
+        <div>
+          <a>English</a>
+          <span>
+            <a>Help</a>
+            <a>Privacy</a>
+            <a>Terms</a>
+          </span>
+        </div>
+      </div> */}
       <div id="cc-text">
         <p>033120190455 by Henry , CC BY</p>
       </div>

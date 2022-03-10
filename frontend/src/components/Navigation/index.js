@@ -1,6 +1,4 @@
 import React, { useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
-import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
 
 function Navigation({ isLoaded }){
@@ -8,17 +6,16 @@ function Navigation({ isLoaded }){
   
   const sessionLinks = (
       <>
-        <LoginFormModal />
-        <button>
-        <NavLink to="/signup">Sign Up</NavLink>
-        </button>
+        <a href='/login' id='splash-login-btn'>Log in</a>
+
+        <a href='/signup' id='a-btn-link'>Sign up</a>
       </>
     );
 
   return (
     <>
       <div id='splash-nav-cont'>
-        <a href='/'>
+        <a href='/' id='nav-logo'>
           <img src='../../includes/flimg-logo.svg'></img>
         </a>
         <div id='splash-search-bar'>
