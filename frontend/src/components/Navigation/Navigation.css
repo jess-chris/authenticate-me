@@ -8,12 +8,18 @@
   width: 100%;
 
 
+
+
   max-width: none!important;
   background: rgba(0,0,0,.25);
 
 
   justify-content: space-between;
   align-items: center;
+}
+
+#nav-logo {
+  margin-left: 1.5rem;
 }
 
 #splash-search-bar {
@@ -23,14 +29,15 @@
 }
 
 
-#splash-nav-bar > button {
+#splash-login-btn {
   border: none;
   height: 32px;
   line-height: 32px;
-  min-width: 80px;
+  color: #fff;
+  padding-right: 1rem;
 
 }
 
-a {
+#splash-nav-bar a {
   text-decoration: none;
 }

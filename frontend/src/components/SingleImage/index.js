@@ -13,8 +13,6 @@ const SingleImage = ({ sessionUser }) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  console.log(location)
-
   const handleSubmit = (e) => {
 
     e.preventDefault();
@@ -23,8 +21,6 @@ const SingleImage = ({ sessionUser }) => {
 
     history.push('/');
   };
-
-
 
 
   let sessionLinks;
@@ -42,7 +38,7 @@ const SingleImage = ({ sessionUser }) => {
   return (
     <div className='fix-height' id='single-image-card'>
 
-      <h3>{`By: ${sessionUser.username}`}</h3>
+      <h3>{`By: `}</h3>
 
       <img src={location.state.imageUrl} />
 

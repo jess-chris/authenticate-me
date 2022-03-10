@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
+import LoginFormPage from "./components/LoginFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
@@ -40,16 +41,10 @@ function App() {
               </div>
             </div>
           </Route>
-          <Route path="/signup">
-            <NavBar sessionUser={sessionUser} />
-            <div className="fix-height" id="signup-card">
-              <SignupFormPage />
-            </div>
-          </Route>
         </Switch>
       )}
 
-      {sessionUser && (
+      {sessionUser && isLoaded && (
         <Switch>
 
           <Route exact path="/">
@@ -73,6 +68,21 @@ function App() {
 
         </Switch>
       )}
+      <Switch>
+        <Route path="/signup">
+          <NavBar sessionUser={sessionUser} />
+          <div className="fix-height" id="signup-card">
+            <SignupFormPage />
+          </div>
+        </Route>
+        
+        <Route path="/login">
+          <NavBar sessionUser={sessionUser} />
+          <div className="fix-height" id="login-card">
+            <LoginFormPage />
+          </div>
+        </Route>
+      </Switch>
 
       <Footer />
     </>
