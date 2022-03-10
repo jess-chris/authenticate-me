@@ -11,7 +11,7 @@ function NavBar({ sessionUser }) {
   if(sessionUser) {
    sessionLinks = (
     <>
-      <NavLink to="/images/new"><i id="upload-btn" class="fa-solid fa-cloud-arrow-up fa-xl"></i></NavLink>
+      <NavLink to="/images/new"><i id="upload-btn" className="fa-solid fa-cloud-arrow-up fa-xl"></i></NavLink>
       <ProfileButton user={sessionUser} /> 
     </>
    );
