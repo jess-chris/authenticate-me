@@ -10,15 +10,21 @@ import MainContent from "./components/MainContent";
 import NavBar from "./components/NavBar";
 import UploadImage from "./components/UploadImage";
 import SingleImage from "./components/SingleImage";
+import ImageScroll from "./components/ImageScroll";
+
+import { fetchImages } from "./store/imageReducer";
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
 
   const sessionUser = useSelector(state => state.session.user);
+  const imagesObject = useSelector((state) => state.imageState.entries);
+  const images = Object.values(imagesObject);
 
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+    dispatch(fetchImages());
   }, [dispatch]);
 
 
@@ -39,6 +45,7 @@ function App() {
                   </a>
                 </div>
               </div>
+              <ImageScroll images={images}/>
             </div>
           </Route>
         </Switch>
