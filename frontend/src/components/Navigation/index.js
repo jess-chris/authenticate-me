@@ -6,26 +6,6 @@ import { NavLink } from 'react-router-dom';
 
 function Navigation({ isLoaded }){
 
-
-  // useEffect(() => {
-
-  //   (function loop(){
-  //     setTimeout(function() {
-  //       const splashCont = document.querySelector('.splash-cont');
-
-  //       const arr = [
-  //         'https://cdn.pixabay.com/photo/2020/06/01/22/23/eyes-5248678_960_720.jpg',
-  //         'https://cdn.pixabay.com/photo/2015/11/16/14/43/cat-1045782_960_720.jpg',
-  //         'https://cdn.pixabay.com/photo/2015/04/23/21/59/tree-736877_960_720.jpg'
-  //       ]
-    
-  //       splashCont.style.backgroundImage = `url('${arr[Math.floor(Math.random() * arr.length - 1)]}')`;
-   
-  //        loop();
-  //    }, 4000);
-  //  })();
-  // }, []);
-  
   const sessionLinks = (
       <>
         <NavLink to='/login' id='splash-login-btn'>Log in</NavLink>
