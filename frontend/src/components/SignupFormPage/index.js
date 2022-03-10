@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import './SignupForm.css';
 
@@ -85,27 +85,17 @@ function SignupFormPage() {
 
         <span>
           By signing up, you agree with Flimg's
-          <a href=""> Terms of Services </a>
+          <NavLink to=""> Terms of Services </NavLink>
           and
-          <a href=""> Privacy Policy.</a>
+          <NavLink to=""> Privacy Policy.</NavLink>
         </span>
 
         <div id="line-sep"></div>
 
         <p>Already a Flimg member?
-          <a href="/login"> Log in here.</a>
+          <NavLink to="/login"> Log in here.</NavLink>
         </p>
       </form>
-      {/* <div id="under-form-links">
-        <div>
-          <a>English</a>
-          <span>
-            <a>Help</a>
-            <a>Privacy</a>
-            <a>Terms</a>
-          </span>
-        </div>
-      </div> */}
       <div id="cc-text">
         <p>033120190455 by Henry , CC BY</p>
       </div>

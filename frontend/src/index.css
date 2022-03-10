@@ -30,6 +30,10 @@ body {
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: cover;
+
+  /* transition: transform 1s; */
+  /* transform: translateY(-50%); */
+  transition: all 1s ease;
 }
 
 
@@ -97,3 +101,6 @@ ul {
   min-width: 80px;
 }
 
+#nav-logo {
+  margin-left: 1.5rem;
+}

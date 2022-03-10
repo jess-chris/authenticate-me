@@ -18,10 +18,6 @@
   align-items: center;
 }
 
-#nav-logo {
-  margin-left: 1.5rem;
-}
-
 #splash-search-bar {
   display: flex;
   width: 350px;

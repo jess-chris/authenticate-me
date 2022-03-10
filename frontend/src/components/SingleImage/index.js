@@ -28,10 +28,10 @@ const SingleImage = ({ sessionUser }) => {
   if (sessionUser.id === location.state.userId) {
     
     sessionLinks = (
-      <>
+      <div id='edit-bar'>
         <EditImageModal state={location.state}/>
         <button type='submit' onClick={handleSubmit}>Delete</button>
-      </>
+      </div>
     )
   }
 

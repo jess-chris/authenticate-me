@@ -4,3 +4,21 @@
   align-items: center;
   justify-content: center;
 }
+
+#edit-bar {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+}
+
+#edit-bar button {
+
+  border: none;
+  background-color: #128fdc;
+  min-height: 2.5rem;
+  color: rgba(255, 255, 255, 0.822);
+  width: 10.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+}

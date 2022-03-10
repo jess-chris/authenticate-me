@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, useHistory } from 'react-router-dom';
+import { Redirect, useHistory, NavLink } from 'react-router-dom';
 
 import "./LoginForm.css";
 
@@ -62,7 +62,7 @@ function LoginFormPage() {
         <button id="login-btn" type="submit">Log In</button>
     
         <span>Not a Flimg member? 
-          <a href='/signup'> Sign up here.</a>
+          <NavLink to='/signup'> Sign up here.</NavLink>
         </span>
       </form>
       <div id="cc-text">

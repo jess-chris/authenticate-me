@@ -11,7 +11,7 @@ function NavBar({ sessionUser }) {
   if(sessionUser) {
    sessionLinks = (
     <>
-      <button><NavLink to="/images/new">Upload</NavLink></button>
+      <NavLink to="/images/new"><i id="upload-btn" class="fa-solid fa-cloud-arrow-up fa-xl"></i></NavLink>
       <ProfileButton user={sessionUser} /> 
     </>
    );
@@ -20,9 +20,9 @@ function NavBar({ sessionUser }) {
   return (
     <>
       <div id='main-nav-cont'>
-        <a href='/'>
+        <NavLink exact to='/' id='nav-logo'>
           <img src='../../includes/flimg-logo.svg'></img>
-        </a>
+        </NavLink>
         {sessionUser && (
           <div id='search-bar'>
             <input type="search"></input>
