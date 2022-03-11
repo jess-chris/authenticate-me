@@ -13,20 +13,11 @@ const SingleAlbum = ({ sessionUser }) => {
   const albumsObject = useSelector((state) => state.albumState.entries);
   const albums = Object.values(albumsObject);
 
-  const imagesObject = useSelector((state) => state.imageState.entries);
-  const images = Object.values(imagesObject);
-
   const [albumImages, setAlbumImages] = useState({});
 
   const location = useLocation();
   const history = useHistory();
 
-
-
-  useEffect(() => {
-    dispatch(fetchAlbums(albums));
-    dispatch(fetchImages(images));
-  }, [dispatch]);
 
   useEffect(async () => {
     setAlbumImages(await fetchAlbum(location.state.id));

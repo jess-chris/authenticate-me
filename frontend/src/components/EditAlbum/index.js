@@ -10,13 +10,14 @@ import "./EditAlbum.css";
 
 function EditAlbum({ sessionUser }) {
 
+  const dispatch = useDispatch();
+  
   const imagesObject = useSelector((state) => state.imageState.entries);
   const images = Object.values(imagesObject);
 
   const [userImages, setUserImages] = useState({});
   const [selectedImages, setSelectedImages] = useState(new Set());
 
-  const dispatch = useDispatch();
   const location = useLocation();
   const history = useHistory();
 
