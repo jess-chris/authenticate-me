@@ -14,7 +14,7 @@ function MainContent() {
 
   useEffect(() => {
 
-    dispatch(fetchImages());
+    dispatch(fetchImages(images));
   }, [dispatch]);
 
   return (

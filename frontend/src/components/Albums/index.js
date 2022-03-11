@@ -15,7 +15,7 @@ function Albums() {
 
   useEffect(() => {
 
-    dispatch(fetchAlbums());
+    dispatch(fetchAlbums(albums));
 
   }, [dispatch]);
 
