@@ -1,0 +1,22 @@
+#album-cont {
+  gap: 3rem;
+}
+
+
+
+
+.single-album {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+#album-folder {
+  color: #000;
+}
+
+#album-title {
+  font-weight: 700;
+  color: #212124;
+}

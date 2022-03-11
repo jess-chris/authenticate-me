@@ -32,7 +32,7 @@ export const fetchImages = () => async dispatch => {
 
 export const fetchUserImages = async (data) => {
 
-  const res = await fetch('/api/images/user');
+  const res = await fetch(`/api/images/user/${data}`);
   const images = await res.json();
 
   return images;

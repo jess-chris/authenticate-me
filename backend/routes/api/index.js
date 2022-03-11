@@ -21,6 +21,26 @@ router.get('/images', asyncHandler(async (req, res) => {
 }));
 
 
+router.get('/images/user/:userId(\\d+)', asyncHandler(async (req, res) => {
+  
+  const { userId } = req.params;
+  const Op = Sequelize.Op;
+
+  const images = await Image.findAll({
+    where: {
+      userId,
+      albumId: {
+        [Op.eq]: null
+      }
+    }
+  });
+  
+  res.json({ images: images });
+  
+
+}));
+
+
 
 router.get('/images/:id(\\d+)', asyncHandler(async (req, res) => {
 
@@ -34,7 +54,7 @@ router.get('/images/:id(\\d+)', asyncHandler(async (req, res) => {
 }));
 
 
-router.post('/images', asyncHandler(async (req, res, next) => {
+router.post('/images', asyncHandler(async (req, res) => {
 
   const { imageUrl, content, albumId, id} = req.body;
 
@@ -104,6 +124,66 @@ router.get('/albums/:id(\\d+)', asyncHandler(async (req, res) => {
   res.json({ album: album, albumImages: albumImages });
   
 }));
+
+
+
+router.post('/albums', asyncHandler(async (req, res) => {
+
+
+  const { title, userId } = req.body;
+
+  const album = await Album.create({
+    title,
+    userId
+  });
+
+
+  res.json({requestBody: "OK", album: album})
+
+}));
+
+
+router.put('/albums', asyncHandler(async (req, res) => {
+
+  const { id, images } = req.body;
+
+  for (let x = 0; x < images.length; x++) {
+
+    const image = await Image.findByPk(images[x]);
+
+    image.albumId = id;
+    await image.save();
+  }
+
+  res.json({ requestBody: "OK"});
+}));
+
+
+router.delete('/albums/:id(\\d+)', asyncHandler(async (req, res) => {
+
+  const { id } = req.params;
+  const Op = Sequelize.Op;
+
+  const images = await Image.update(
+  {
+    albumId: null
+  },
+  {
+    where: {
+      albumId: {
+        [Op.eq]: id
+      }
+    }
+  });
+
+
+
+  const album = await Album.findByPk(id);
+  await album.destroy();
+
+  res.json({ requestBody: "OK"});
+}));
+
 
 
 module.exports = router;

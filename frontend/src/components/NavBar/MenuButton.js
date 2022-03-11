@@ -33,7 +33,7 @@ function MenuButton() {
         </button>
         {showMenu && (
           <ul className="menu-dropdown">
-            <li><NavLink to="/"><button>Home</button></NavLink></li>
+            <li><NavLink to="/"><button>Photos</button></NavLink></li>
             <li><NavLink to="/albums"><button>Albums</button></NavLink></li>
           </ul>
         )}

@@ -1,0 +1,43 @@
+#edit-album-form {
+  display: flex;
+
+}
+
+#single-image {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#single-image input {
+  margin-top: .5rem;
+}
+
+#edit-album-form img {
+  object-fit: cover;
+  height: 250px;
+  width: 300px;
+}
+
+
+#edit-album-card h2 {
+  padding-top: 2rem;
+  text-align: center;
+}
+
+#edit-album-form button {
+  border: none;
+  background-color: #128fdc;
+  min-height: 2.5rem;
+  color: #fff;
+  width: 21.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+
+
+  align-items: center;
+  margin-left: 40%;
+}
+
+

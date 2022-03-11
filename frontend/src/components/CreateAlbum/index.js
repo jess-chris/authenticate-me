@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
+import { postAlbum } from "../../store/albumReducer";
+
 import "./CreateAlbum.css";
 
 function CreateAlbum({ sessionUser }) {
@@ -19,11 +21,12 @@ function CreateAlbum({ sessionUser }) {
 
 
     const newAlbum = {
-      id,
+      userId: id,
       title
     };
 
-    dispatch()
+    dispatch(postAlbum(newAlbum));
+    history.push("/albums");
     
   };
 

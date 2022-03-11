@@ -13,9 +13,10 @@ import SingleImage from "./components/SingleImage";
 import ImageScroll from "./components/ImageScroll";
 import Albums from "./components/Albums";
 import SingleAlbum from "./components/SingleAlbum";
+import CreateAlbum from "./components/CreateAlbum";
+import EditAlbum from "./components/EditAlbum";
 
 import { fetchImages } from "./store/imageReducer";
-import CreateAlbum from "./components/CreateAlbum";
 
 
 function App() {
@@ -92,9 +93,16 @@ function App() {
             </div>  
           </Route>
 
-          <Route path='/albums/:id'>
+          <Route exact path='/albums/:id'>
             <NavBar sessionUser={sessionUser}/>
             <SingleAlbum sessionUser={sessionUser} />
+          </Route>
+
+          <Route path='/albums/:id/edit'>
+            <NavBar sessionUser={sessionUser}/>
+            <div className="main-content fix-height" id="edit-album-card">
+              <EditAlbum sessionUser={sessionUser} />
+            </div>
           </Route>
 
         </Switch>

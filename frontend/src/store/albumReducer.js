@@ -36,6 +36,54 @@ export const fetchAlbum = async (data) => {
 };
 
 
+export const postAlbum = (data) => async dispatch => {
+
+  const res = await csrfFetch('/api/albums', {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify(data)
+  });
+
+  const newAlbum = await res.json();
+
+  dispatch(addAlbum(newAlbum));
+  return newAlbum;
+};
+
+
+
+export const editAlbum = (data) => async dispatch => {
+
+
+  const res = await csrfFetch('/api/albums', {
+    method: "PUT",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify(data)
+  });
+
+  const newAlbum = await res.json();
+
+  fetchAlbums();
+
+  return await newAlbum;
+};
+
+
+export const deleteAlbum = (data) => async dispatch => {
+
+  const res = await csrfFetch(`/api/albums/${data}`, {
+    method: "DELETE",
+    headers: {"Content-Type":"application/json"}
+  });
+
+  const deletedAlbum = await res.json();
+
+  fetchAlbums();
+
+  return await deletedAlbum;
+
+};
+
 
 const initialState = { entries: {}, isLoading: true};
 
@@ -54,6 +102,15 @@ const albumReducer = (state = initialState, action) => {
 
       action.albums.albums.forEach(album => newAlbums[album.id] = album);
       newState.entries = newAlbums;
+      return newState;
+
+    case ADD_ALBUM:
+      newState = {...state};
+      newAlbums = {...state.entries};
+
+      newAlbums[action.newAlbum.id] = action.newAlbum;
+      newState.entries = newAlbums;
+
       return newState;
 
     default:
