@@ -3,3 +3,7 @@
   height: 250px;
   width: 300px;
 }
+
+#album-title {
+  text-align: center;
+}

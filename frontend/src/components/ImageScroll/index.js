@@ -6,9 +6,9 @@ function ImageScroll({ images }) {
   
       try {
         splashCont.style.backgroundImage = `url('${images[Math.floor(Math.random() * images.length) - 1].imageUrl}')`;
-      } catch {
-        return
-      }
+      } catch {}
+
+      if (!splashCont) return;
 
        loop();
    }, 5000);

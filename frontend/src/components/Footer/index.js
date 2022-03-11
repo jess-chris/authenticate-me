@@ -13,7 +13,7 @@ function Footer() {
       <p>Devel</p>
       <p>Guide</p>
       <p>Help </p>
-      <p>Priva</p>
+      <p>Privacy</p>
       <p>Terms</p>
       <p>Cookies</p>
       <p>English</p>

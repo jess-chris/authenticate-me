@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useHistory } from 'react-router-dom';
+import { useLocation, useHistory, NavLink } from 'react-router-dom';
 import { fetchAlbum } from '../../store/albumReducer';
 
 import "./SingleAlbum.css";
@@ -17,17 +17,19 @@ const SingleAlbum = ({ sessionUser }) => {
   return (
     <div className="main-content fix-height">
     
-    <h1>{albumImages.album && albumImages.album.title}</h1>
+    <h1 id='album-title'>{albumImages.album && albumImages.album.title}</h1>
 
     {albumImages.albumImages && albumImages.albumImages.length === 0 && (
       <h3>No images added yet!</h3>
     )}
 
     <ul>
-      {albumImages.albumImages && albumImages.albumImages.map(({id, imageUrl}) => (
+      {albumImages.albumImages && albumImages.albumImages.map(({ id, imageUrl, content, userId }) => (
         <li key={id}>
-            <img id={id} src={imageUrl} />
-        </li>
+        <NavLink to={{pathname: `/images/${id}`, state:{id, imageUrl, content, userId}}}>
+          <img id={id} src={imageUrl}></img>
+        </NavLink>
+      </li>
       ))}
     </ul>
     

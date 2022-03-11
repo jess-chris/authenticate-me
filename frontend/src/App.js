@@ -15,6 +15,7 @@ import Albums from "./components/Albums";
 import SingleAlbum from "./components/SingleAlbum";
 
 import { fetchImages } from "./store/imageReducer";
+import CreateAlbum from "./components/CreateAlbum";
 
 
 function App() {
@@ -87,7 +88,7 @@ function App() {
           <Route path='/albums/new'>
             <NavBar sessionUser={sessionUser}/>
             <div className="fix-height" id="new-album-card">
-              
+              <CreateAlbum sessionUser={sessionUser}/>
             </div>  
           </Route>
 

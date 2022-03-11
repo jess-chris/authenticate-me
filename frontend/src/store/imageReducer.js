@@ -30,6 +30,14 @@ export const fetchImages = () => async dispatch => {
   return images;
 };
 
+export const fetchUserImages = async (data) => {
+
+  const res = await fetch('/api/images/user');
+  const images = await res.json();
+
+  return images;
+};
+
 
 export const postImage = (data) => async dispatch => {
 
