@@ -21,6 +21,11 @@ function EditAlbum({ sessionUser }) {
   const history = useHistory();
 
 
+  useEffect(() => {
+
+    dispatch(fetchImages());
+  }, [dispatch]);
+
   if (sessionUser.id !== location.state.userId) history.push("/");
 
   const handleSubmit = (e) => {
@@ -33,7 +38,6 @@ function EditAlbum({ sessionUser }) {
     const newAlbum = [...selectedImages];
 
     dispatch(editAlbum({id, images: newAlbum}));
-    dispatch(fetchImages(images));
 
     history.push({pathname:`/albums/${id}`, state:{userId, id}});
 

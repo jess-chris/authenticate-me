@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import { postAlbum } from "../../store/albumReducer";
+import { postAlbum, fetchAlbums } from "../../store/albumReducer";
 
 import "./CreateAlbum.css";
 
@@ -12,6 +12,15 @@ function CreateAlbum({ sessionUser }) {
 
   const dispatch = useDispatch();
   const history = useHistory();
+
+  const albumsObject = useSelector((state) => state.albumState.entries);
+  const albums = Object.values(albumsObject);
+
+  useEffect(() => {
+
+    dispatch(fetchAlbums());
+
+  }, [dispatch]);
 
   const [title, setTitle] = useState("");
 
