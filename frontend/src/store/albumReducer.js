@@ -63,7 +63,7 @@ export const editAlbum = (data) => async dispatch => {
 
   const newAlbum = await res.json();
 
-  fetchAlbums();
+  dispatch(fetchAlbums());
 
   return await newAlbum;
 };

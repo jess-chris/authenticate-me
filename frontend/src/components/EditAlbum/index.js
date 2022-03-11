@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from "react-redux";
-import { updateImage } from "../../store/imageReducer";
+import { fetchImages, updateImage } from "../../store/imageReducer";
 import { useHistory, useLocation } from "react-router-dom";
 
 import { fetchUserImages } from '../../store/imageReducer';
@@ -30,6 +30,7 @@ function EditAlbum({ sessionUser }) {
     const newAlbum = [...selectedImages];
 
     dispatch(editAlbum({id, images: newAlbum}));
+    dispatch(fetchImages());
 
     history.push({pathname:`/albums/${id}`, state:{userId, id}});
 
