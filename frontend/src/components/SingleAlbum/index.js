@@ -18,7 +18,7 @@ const SingleAlbum = ({ sessionUser }) => {
 
   useEffect(async () => {
     setAlbumImages(await fetchAlbum(location.state.id));
-  }, []);
+  }, [dispatch]);
 
   const handleDelete = (e) => {
     e.preventDefault();
