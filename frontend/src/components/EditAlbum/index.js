@@ -23,7 +23,7 @@ function EditAlbum({ sessionUser }) {
 
   useEffect(() => {
 
-    dispatch(fetchImages());
+    dispatch(fetchImages(images));
   }, [dispatch]);
 
   if (sessionUser.id !== location.state.userId) history.push("/");
@@ -38,6 +38,7 @@ function EditAlbum({ sessionUser }) {
     const newAlbum = [...selectedImages];
 
     dispatch(editAlbum({id, images: newAlbum}));
+    dispatch(fetchImages(images));
 
     history.push(`/albums/${id}`);
 
