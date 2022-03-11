@@ -2,15 +2,13 @@ const router = require('express').Router();
 
 const asyncHandler = require('express-async-handler');
 // const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth.js');
-const { User, Image } = require('../../db/models');
+const { User, Image, Album, Sequelize } = require('../../db/models');
 
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
-
-
 
 
 router.get('/images', asyncHandler(async (req, res) => {
@@ -74,5 +72,38 @@ router.delete('/images/:id(\\d+)', asyncHandler(async (req, res) => {
 
   res.json({ requestBody: "OK"});
 }));
+
+
+
+// ALBUM ROUTES \\
+
+router.get('/albums', asyncHandler(async (req, res) => {
+  
+  const albums = await Album.findAll();
+  
+  res.json({ albums: albums });
+  
+
+}));
+
+
+router.get('/albums/:id(\\d+)', asyncHandler(async (req, res) => {
+  
+  const { id } = req.params;
+  const Op = Sequelize.Op;
+
+  const album = await Album.findByPk(id);
+  const albumImages = await Image.findAll({
+    where: {
+      albumId: {
+        [Op.eq]: id
+      }
+    }
+  });
+  
+  res.json({ album: album, albumImages: albumImages });
+  
+}));
+
 
 module.exports = router;

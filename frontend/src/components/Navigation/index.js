@@ -20,9 +20,11 @@ function Navigation({ isLoaded }){
         <NavLink exact to="/" id='nav-logo'>
           <img src='../../includes/flimg-logo.svg'></img>
         </NavLink>
-        <div id='splash-search-bar'>
-          <input type="search"></input>
-          <button>Search</button>
+        <div id='search-bar'>
+          <span id='search-box'>
+            <button><i className="fa-solid fa-magnifying-glass fa-1x"></i></button>
+            <input type="search" size="140" placeholder="Photos, people, or groups"></input>
+          </span>
         </div>
         <div id="splash-nav-bar">
           <ul>

@@ -20,7 +20,7 @@ body {
 }
 
 .fix-height {
-  min-height: calc(100vh - 6rem);
+  min-height: calc(100vh - 120px);
 }
 
  #root {
@@ -45,7 +45,7 @@ ul {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 6rem);
+  min-height: calc(100vh - 120px);
   width: 100%;
   
 }
@@ -103,4 +103,30 @@ ul {
 
 #nav-logo {
   margin-left: 1.5rem;
+}
+
+#search-bar input, button {
+
+  outline: none;
+  border: 0;
+    
+  }
+  
+#search-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  line-height: 20px;
+  padding: 5px;
+  outline: none;
+  background: #fff;
+  opacity: .75;
+}
+
+.main-content ul {
+  padding-top: 20px;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 5px;
 }

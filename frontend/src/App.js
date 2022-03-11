@@ -11,8 +11,11 @@ import NavBar from "./components/NavBar";
 import UploadImage from "./components/UploadImage";
 import SingleImage from "./components/SingleImage";
 import ImageScroll from "./components/ImageScroll";
+import Albums from "./components/Albums";
+import SingleAlbum from "./components/SingleAlbum";
 
 import { fetchImages } from "./store/imageReducer";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -21,6 +24,7 @@ function App() {
   const sessionUser = useSelector(state => state.session.user);
   const imagesObject = useSelector((state) => state.imageState.entries);
   const images = Object.values(imagesObject);
+
 
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
@@ -71,6 +75,25 @@ function App() {
           <Route path='/images/:id'>
             <NavBar sessionUser={sessionUser}/>
             <SingleImage sessionUser={sessionUser}/>
+          </Route>
+
+          <Route exact path='/albums'>
+            <NavBar sessionUser={sessionUser}/>
+            <div className="main-content fix-height">
+              <Albums sessionUser={sessionUser}/>
+            </div>  
+          </Route>
+
+          <Route path='/albums/new'>
+            <NavBar sessionUser={sessionUser}/>
+            <div className="fix-height" id="new-album-card">
+              
+            </div>  
+          </Route>
+
+          <Route path='/albums/:id'>
+            <NavBar sessionUser={sessionUser}/>
+            <SingleAlbum sessionUser={sessionUser} />
           </Route>
 
         </Switch>
