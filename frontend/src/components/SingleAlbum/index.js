@@ -2,23 +2,33 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useHistory, NavLink } from 'react-router-dom';
 import { fetchAlbum, deleteAlbum, fetchAlbums } from '../../store/albumReducer';
+import { fetchImages } from '../../store/imageReducer';
 
 import "./SingleAlbum.css";
 
 const SingleAlbum = ({ sessionUser }) => {
 
+  const dispatch = useDispatch();
+
   const albumsObject = useSelector((state) => state.albumState.entries);
   const albums = Object.values(albumsObject);
+
+  const imagesObject = useSelector((state) => state.imageState.entries);
+  const images = Object.values(imagesObject);
 
   const [albumImages, setAlbumImages] = useState({});
 
   const location = useLocation();
-  const dispatch = useDispatch();
   const history = useHistory();
+
+  useEffect(() => {
+    dispatch(fetchAlbums(albums));
+    dispatch(fetchImages(images));
+  }, [dispatch]);
 
   useEffect(async () => {
     setAlbumImages(await fetchAlbum(location.state.id));
-  }, [dispatch]);
+  }, []);
 
   const handleDelete = (e) => {
     e.preventDefault();
