@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchImages, updateImage } from "../../store/imageReducer";
 import { useHistory, useLocation } from "react-router-dom";
 
@@ -9,6 +9,9 @@ import { editAlbum } from '../../store/albumReducer';
 import "./EditAlbum.css";
 
 function EditAlbum({ sessionUser }) {
+
+  const imagesObject = useSelector((state) => state.imageState.entries);
+  const images = Object.values(imagesObject);
 
   const [userImages, setUserImages] = useState({});
   const [selectedImages, setSelectedImages] = useState(new Set());
@@ -30,7 +33,7 @@ function EditAlbum({ sessionUser }) {
     const newAlbum = [...selectedImages];
 
     dispatch(editAlbum({id, images: newAlbum}));
-    dispatch(fetchImages());
+    dispatch(fetchImages(images));
 
     history.push({pathname:`/albums/${id}`, state:{userId, id}});
 

@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useHistory, NavLink } from 'react-router-dom';
-import { fetchAlbum, deleteAlbum } from '../../store/albumReducer';
+import { fetchAlbum, deleteAlbum, fetchAlbums } from '../../store/albumReducer';
 
 import "./SingleAlbum.css";
 
 const SingleAlbum = ({ sessionUser }) => {
+
+  const albumsObject = useSelector((state) => state.albumState.entries);
+  const albums = Object.values(albumsObject);
 
   const [albumImages, setAlbumImages] = useState({});
 
@@ -21,6 +24,7 @@ const SingleAlbum = ({ sessionUser }) => {
     e.preventDefault();
 
     dispatch(deleteAlbum(location.state.id));
+    dispatch(fetchAlbums(albums))
 
     history.push("/albums");
   }
