@@ -21,6 +21,8 @@ const SingleAlbum = ({ sessionUser }) => {
   const location = useLocation();
   const history = useHistory();
 
+
+
   useEffect(() => {
     dispatch(fetchAlbums(albums));
     dispatch(fetchImages(images));

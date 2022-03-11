@@ -33,14 +33,14 @@ function EditAlbum({ sessionUser }) {
     e.preventDefault();
 
     const id = location.state.id;
-
+    const userId = location.state.userId;
 
     const newAlbum = [...selectedImages];
 
     dispatch(editAlbum({id, images: newAlbum}));
     dispatch(fetchImages(images));
 
-    history.push(`/albums/${id}`);
+    history.push({pathname:`/albums/${id}`, state:{id, userId, images}});
 
   };
 
