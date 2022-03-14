@@ -1,13 +1,33 @@
-import React, { useEffect } from 'react';
-import { fetchImages } from '../../store/imageReducer';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import * as sessionActions from '../../store/session';
+import { useDispatch } from 'react-redux';
 import './Navigation.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 
-function Navigation({ isLoaded }){
+function Navigation({ isLoaded }) {
+
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const [errors, setErrors] = useState([]);
+
+  const demoUser = (async (e) => {
+
+    e.preventDefault();
+    setErrors([]);
+    await dispatch(sessionActions.login({ credential: 'Demo-lition', password: 'password' }))
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      });
+    history.push("/");
+
+  });
+
 
   const sessionLinks = (
       <>
+        <button onClick={demoUser} id='a-btn-link'>Demo</button>
+
         <NavLink to='/login' id='splash-login-btn'>Log in</NavLink>
 
         <NavLink to='/signup' id='a-btn-link'>Sign up</NavLink>

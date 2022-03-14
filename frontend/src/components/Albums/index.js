@@ -1,23 +1,28 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory, useLocation } from "react-router-dom";
 
 import { fetchAlbums } from "../../store/albumReducer";
 import { fetchImages } from "../../store/imageReducer";
 
 import "./Albums.css";
 
-function Albums() {
+function Albums({ sessionUser }) {
+
+  const history = useHistory();
+  const location = useLocation();
   const dispatch = useDispatch();
 
+  
+  useEffect(() => {
+    
+    dispatch(fetchAlbums(albums));
+    
+  }, [dispatch]);
+  
   const albumsObject = useSelector((state) => state.albumState.entries);
   const albums = Object.values(albumsObject);
 
-  useEffect(() => {
-
-    dispatch(fetchAlbums());
-
-  }, [dispatch]);
 
   return(
     <ul id="album-cont">

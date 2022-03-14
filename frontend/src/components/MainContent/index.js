@@ -9,14 +9,13 @@ import './MainContent.css';
 function MainContent() {
   const dispatch = useDispatch();
 
-  const imagesObject = useSelector((state) => state.imageState.entries);
-  const images = Object.values(imagesObject);
-
   useEffect(() => {
-
+    
     dispatch(fetchImages(images));
   }, [dispatch]);
-
+  
+  const imagesObject = useSelector((state) => state.imageState.entries);
+  const images = Object.values(imagesObject);
   return (
 
     <ul>

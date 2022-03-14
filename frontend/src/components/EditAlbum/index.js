@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { fetchImages, updateImage } from "../../store/imageReducer";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory, useLocation, useParams } from "react-router-dom";
 
 import { fetchUserImages } from '../../store/imageReducer';
 import { editAlbum } from '../../store/albumReducer';
@@ -9,41 +9,48 @@ import { editAlbum } from '../../store/albumReducer';
 import "./EditAlbum.css";
 
 function EditAlbum({ sessionUser }) {
-
-  const dispatch = useDispatch();
   
-  const imagesObject = useSelector((state) => state.imageState.entries);
-  const images = Object.values(imagesObject);
-
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const params = useParams();
+  const history = useHistory();
   const [userImages, setUserImages] = useState({});
   const [selectedImages, setSelectedImages] = useState(new Set());
 
-  const location = useLocation();
-  const history = useHistory();
+  if (!sessionUser) history.push("/");
 
+  const { id } = useParams();
+  const userId = sessionUser.id;
 
   useEffect(() => {
 
     dispatch(fetchImages(images));
   }, [dispatch]);
 
-  if (sessionUser.id !== location.state.userId) history.push("/");
+  const imagesObject = useSelector((state) => state.imageState.entries);
+  const images = Object.values(imagesObject);
 
   const handleSubmit = (e) => {
 
     e.preventDefault();
-
-    const id = location.state.id;
-    const userId = location.state.userId;
 
     const newAlbum = [...selectedImages];
 
     dispatch(editAlbum({id, images: newAlbum}));
     dispatch(fetchImages(images));
 
-    history.push({pathname:`/albums/${id}`, state:{id, userId, images}});
+    history.push({pathname:`/albums/${id}`, state:{userId, id}});
 
   };
+
+
+
+  useEffect(async () => {
+
+    setUserImages(await fetchUserImages(sessionUser.id));
+
+  }, []);
+
 
   const handleChange = (e) => {
 
@@ -54,12 +61,6 @@ function EditAlbum({ sessionUser }) {
     }
 
   };
-
-  useEffect(async () => {
-
-    setUserImages(await fetchUserImages(sessionUser.id));
-
-  }, []);
 
   return(
     <>

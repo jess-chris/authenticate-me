@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation, useHistory, NavLink } from 'react-router-dom';
+import { useLocation, useHistory, NavLink, useParams } from 'react-router-dom';
 import { fetchAlbum, deleteAlbum, fetchAlbums } from '../../store/albumReducer';
 import { fetchImages } from '../../store/imageReducer';
 
@@ -10,6 +10,20 @@ const SingleAlbum = ({ sessionUser }) => {
 
   const dispatch = useDispatch();
 
+  const location = useLocation();
+  const history = useHistory();
+  const params = useParams();
+
+  const { id } = params;
+  const pathId = id;
+
+  useEffect(() => {
+
+    dispatch(fetchAlbums(albums));
+    dispatch(fetchImages(images));
+
+  }, [dispatch]);
+
   const albumsObject = useSelector((state) => state.albumState.entries);
   const albums = Object.values(albumsObject);
 
@@ -18,17 +32,11 @@ const SingleAlbum = ({ sessionUser }) => {
 
   const [albumImages, setAlbumImages] = useState({});
 
-  const location = useLocation();
-  const history = useHistory();
-
-  useEffect(() => {
-
-    dispatch(fetchImages(images));
-  }, [dispatch]);
-
   useEffect(async () => {
     setAlbumImages(await fetchAlbum(location.state.id));
   }, []);
+
+
 
   const handleDelete = (e) => {
     e.preventDefault();
@@ -58,17 +66,19 @@ const SingleAlbum = ({ sessionUser }) => {
   return (
     <div className="main-content fix-height">
     
-      <h1 className='album-title'>{albumImages.album && albumImages.album.title}</h1>
+      { <h1 className='album-title'>{albumImages.album && albumImages.album.title}</h1> }
 
       {albumImages.albumImages && albumImages.albumImages.length === 0 && (
         <h3 className='album-title'>No images added yet!</h3>
       )}
 
       <ul>
-        {albumImages.albumImages && albumImages.albumImages.map(({ id, imageUrl, content, userId }) => (
+        {images && images.map(({ id, imageUrl, content, userId, albumId }) => (
           <li key={id}>
           <NavLink to={{pathname: `/images/${id}`, state:{id, imageUrl, content, userId}}}>
+            {albumId == pathId && ( 
             <img id={id} src={imageUrl}></img>
+            )}
           </NavLink>
         </li>
         ))}
