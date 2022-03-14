@@ -65,7 +65,7 @@ export const editAlbum = (data) => async dispatch => {
 
   dispatch(fetchAlbums());
 
-  return await newAlbum;
+  return newAlbum;
 };
 
 
@@ -80,7 +80,7 @@ export const deleteAlbum = (data) => async dispatch => {
 
   fetchAlbums();
 
-  return await deletedAlbum;
+  return deletedAlbum;
 
 };
 

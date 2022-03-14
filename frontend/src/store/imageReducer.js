@@ -82,10 +82,9 @@ export const deleteImage = (data) => async dispatch => {
 
   const deletedImage = await res.json();
 
-  
-  fetchImages();
+  dispatch(fetchImages());
 
-  return await deletedImage;
+  return deletedImage;
 
 };
 

@@ -8,19 +8,22 @@ import "./CreateAlbum.css";
 
 function CreateAlbum({ sessionUser }) {
 
-  const { id } = sessionUser;
-
   const dispatch = useDispatch();
   const history = useHistory();
 
+  if(!sessionUser) history.push("/");
+
+  const { id } = sessionUser;
+
+  useEffect(() => {
+    
+    dispatch(fetchAlbums(albums));
+    
+  }, [dispatch]);
+  
   const albumsObject = useSelector((state) => state.albumState.entries);
   const albums = Object.values(albumsObject);
 
-  useEffect(() => {
-
-    dispatch(fetchAlbums());
-
-  }, [dispatch]);
 
   const [title, setTitle] = useState("");
 
@@ -35,6 +38,8 @@ function CreateAlbum({ sessionUser }) {
     };
 
     dispatch(postAlbum(newAlbum));
+    dispatch(fetchAlbums(albums));
+
     history.push("/albums");
     
   };

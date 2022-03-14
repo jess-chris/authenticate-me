@@ -19,6 +19,10 @@
   align-items: center;
 }
 
+#splash-demo-btn {
+  padding-right: 3rem;
+}
+
 
 #splash-login-btn {
   border: none;

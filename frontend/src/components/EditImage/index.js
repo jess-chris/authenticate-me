@@ -19,6 +19,8 @@ function EditImageModal({ state }) {
 
   const { userId, id } = state;
 
+  if(!userId) history.push("/");
+
   const handleSubmit = (e) => {
 
     e.preventDefault();
