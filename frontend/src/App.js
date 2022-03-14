@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Route, Switch } from "react-router-dom";
+import { NavLink, Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import * as sessionActions from "./store/session";
@@ -44,9 +44,9 @@ function App() {
                 <div id="bg-text-content">
                   <h1>Find your inspiration.</h1>
                   <h3>Join the Flimg community, home to tens of billions of photos and 2 million groups.</h3>
-                  <a href="/signup">
+                  <NavLink to="/signup">
                     <button id="fp-signup-btn">Start for free</button>
-                  </a>
+                  </NavLink>
                 </div>
               </div>
               <ImageScroll images={images}/>

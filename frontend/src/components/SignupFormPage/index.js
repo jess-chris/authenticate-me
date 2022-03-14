@@ -7,10 +7,10 @@ import './SignupForm.css';
 function SignupFormPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const [email, setEmail] = useState("Enter Email");
-  const [username, setUsername] = useState("Enter Username");
-  const [password, setPassword] = useState("Enter Password");
-  const [confirmPassword, setConfirmPassword] = useState("Confirm Password");
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
   if (sessionUser) return <Redirect to="/" />;
@@ -41,8 +41,7 @@ function SignupFormPage() {
           <input
             type="text"
             value={email}
-            onFocus={(e) => {if(e.target.value === "Enter Email") e.target.value = ""}}
-            onBlur={(e) => {if(e.target.value === "") e.target.value = "Enter Email"}}
+            placeholder="Enter email"
             onChange={(e) => setEmail(e.target.value)}
             size="50"
             required
@@ -52,8 +51,7 @@ function SignupFormPage() {
           <input
             type="text"
             value={username}
-            onFocus={(e) => {if(e.target.value === "Enter Username") e.target.value = ""}}
-            onBlur={(e) => {if(e.target.value === "") e.target.value = "Enter Username"}}
+            placeholder="Enter username"
             onChange={(e) => setUsername(e.target.value)}
             size="50"
             required
@@ -61,10 +59,9 @@ function SignupFormPage() {
         </label>
         <label>
           <input
-            type={password === "Enter Password" ? "text" : "password"}
+            type="password"
             value={password}
-            onFocus={(e) => {if(e.target.value === "Enter Password") e.target.value = ""}}
-            onBlur={(e) => {if(e.target.value === "") e.target.value = "Enter Password"}}
+            placeholder="Enter password"
             onChange={(e) => setPassword(e.target.value)}
             size="50"
             required
@@ -72,10 +69,9 @@ function SignupFormPage() {
         </label>
         <label>
           <input
-            type={confirmPassword === "Confirm Password" ? "text" : "password"}
+            type="password"
             value={confirmPassword}
-            onFocus={(e) => {if(e.target.value === "Confirm Password") e.target.value = "" }}
-            onBlur={(e) => {if(e.target.value === "") e.target.value = "Confirm Password"}}
+            placeholder="Confirm password"
             onChange={(e) => setConfirmPassword(e.target.value)}
             size="50"
             required

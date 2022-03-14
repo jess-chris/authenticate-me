@@ -9,8 +9,8 @@ function LoginFormPage() {
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
-  const [credential, setCredential] = useState('Username or Email');
-  const [password, setPassword] = useState('Enter Password');
+  const [credential, setCredential] = useState('');
+  const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
 
   if (sessionUser) return <Redirect to="/" />;
@@ -24,8 +24,8 @@ function LoginFormPage() {
       .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
+        else history.push("/");
       });
-    history.push("/");
   })
 
 
@@ -42,18 +42,16 @@ function LoginFormPage() {
             type="text"
             value={credential}
             onChange={(e) => setCredential(e.target.value)}
-            onFocus={(e) => {if(e.target.value === "Username or Email") e.target.value = ""}}
-            onBlur={(e) => {if(e.target.value === "") e.target.value = "Username or Email"}}
+            placeholder="Enter username"
             size="50"
             required
           />
         </label>
         <label>
           <input
-              type={password === "Enter Password" ? "text" : "password"}
+              type="password"
               value={password}
-              onFocus={(e) => {if(e.target.value === "Enter Password") e.target.value = ""}}
-              onBlur={(e) => {if(e.target.value === "") e.target.value = "Enter Password"}}
+              placeholder="Enter password"
               onChange={(e) => setPassword(e.target.value)}
               size="50"
               required
