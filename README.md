@@ -7,6 +7,7 @@ A clone of Flickr, my take on another image hosting service.
 [MVP Features](https://github.com/jess-chris/flimg-app/wiki/Features) | [Database Schema](https://github.com/jess-chris/flimg-app/wiki/Database-Schema)
 
 # Technologies Used
+Javascript | NodeJS | Postgresql | Sequelize | Express | React
 
 # Getting Started
 
