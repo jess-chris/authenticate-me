@@ -1,27 +1,27 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useHistory, useLocation } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 
 import { fetchAlbums } from "../../store/albumReducer";
-import { fetchImages } from "../../store/imageReducer";
 
 import "./Albums.css";
 
 function Albums({ sessionUser }) {
 
-  const history = useHistory();
-  const location = useLocation();
-  const dispatch = useDispatch();
 
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  if(!sessionUser) history.push("/");
   
+  const albumsObject = useSelector((state) => state.albumState.entries);
+  const albums = Object.values(albumsObject);
   useEffect(() => {
     
     dispatch(fetchAlbums(albums));
     
   }, [dispatch]);
   
-  const albumsObject = useSelector((state) => state.albumState.entries);
-  const albums = Object.values(albumsObject);
 
 
   return(

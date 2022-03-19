@@ -16,6 +16,7 @@ function MainContent() {
   
   const imagesObject = useSelector((state) => state.imageState.entries);
   const images = Object.values(imagesObject);
+  
   return (
 
     <ul>

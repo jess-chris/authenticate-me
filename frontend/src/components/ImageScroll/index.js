@@ -1,5 +1,10 @@
-function ImageScroll({ images }) {
+import { useSelector } from "react-redux";
+
+function ImageScroll() {
   
+  const imagesObject = useSelector((state) => state.imageState.entries);
+  const images = Object.values(imagesObject);
+
   (function loop(){
     setTimeout(function() {
       const splashCont = document.querySelector('.splash-cont');

@@ -13,6 +13,8 @@ const SingleImage = ({ sessionUser }) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  if (!sessionUser) history.push("/");
+
   const handleSubmit = (e) => {
 
     e.preventDefault();

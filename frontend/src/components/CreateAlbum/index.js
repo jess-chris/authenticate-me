@@ -15,14 +15,15 @@ function CreateAlbum({ sessionUser }) {
 
   const { id } = sessionUser;
 
+  const albumsObject = useSelector((state) => state.albumState.entries);
+  const albums = Object.values(albumsObject);
+
   useEffect(() => {
     
     dispatch(fetchAlbums(albums));
     
   }, [dispatch]);
   
-  const albumsObject = useSelector((state) => state.albumState.entries);
-  const albums = Object.values(albumsObject);
 
 
   const [title, setTitle] = useState("");

@@ -11,6 +11,8 @@ function UploadImage({ sessionUser }) {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  if (!sessionUser) history.push("/");
+
   const [imageUrl, setImageUrl] = useState("");
   const [content, setContent] = useState("");
 

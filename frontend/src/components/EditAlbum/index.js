@@ -11,8 +11,7 @@ import "./EditAlbum.css";
 function EditAlbum({ sessionUser }) {
   
   const dispatch = useDispatch();
-  const location = useLocation();
-  const params = useParams();
+
   const history = useHistory();
   const [userImages, setUserImages] = useState({});
   const [selectedImages, setSelectedImages] = useState(new Set());

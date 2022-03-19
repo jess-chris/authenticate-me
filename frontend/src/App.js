@@ -16,8 +16,6 @@ import SingleAlbum from "./components/SingleAlbum";
 import CreateAlbum from "./components/CreateAlbum";
 import EditAlbum from "./components/EditAlbum";
 
-import { fetchImages } from "./store/imageReducer";
-
 
 function App() {
   const dispatch = useDispatch();
@@ -25,12 +23,9 @@ function App() {
   
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
-    dispatch(fetchImages());
   }, [dispatch]);
   
   const sessionUser = useSelector(state => state.session.user);
-  const imagesObject = useSelector((state) => state.imageState.entries);
-  const images = Object.values(imagesObject);
 
 
   return (
@@ -49,7 +44,7 @@ function App() {
                   </NavLink>
                 </div>
               </div>
-              <ImageScroll images={images}/>
+              <ImageScroll />
             </div>
           </Route>
         </Switch>
