@@ -29,7 +29,7 @@ function NavBar({ sessionUser }) {
         {sessionUser && (
           <div id='search-bar'>
               <span id='search-box'>
-                <button><i className="fa-solid fa-magnifying-glass fa-1x"></i></button>
+                <button className='cfix'><i className="fa-solid fa-magnifying-glass fa-1x"></i></button>
                 <input type="search" size="140" placeholder="Photos, people, or groups"></input>
               </span>
           </div>
