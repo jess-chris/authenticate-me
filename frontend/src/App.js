@@ -16,16 +16,24 @@ import SingleAlbum from "./components/SingleAlbum";
 import CreateAlbum from "./components/CreateAlbum";
 import EditAlbum from "./components/EditAlbum";
 
+import { fetchImages } from './store/imageReducer';
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   
   useEffect(() => {
-    dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+    (async() => {
+      await dispatch(sessionActions.restoreUser());
+      await dispatch(fetchImages(images));
+      setIsLoaded(true);
+    })();
   }, [dispatch]);
-  
+
   const sessionUser = useSelector(state => state.session.user);
+  const imagesObject = useSelector((state) => state.imageState.entries);
+  const images = Object.values(imagesObject);
+
 
 
   return (
@@ -33,9 +41,13 @@ function App() {
       {!sessionUser && isLoaded && (
         <Switch>
           <Route exact path="/">
-            <div className="splash-cont">
-              <Navigation isLoaded={isLoaded} />
-              <div className="splash">
+
+            <Navigation isLoaded={isLoaded} />
+            <div className="splash">
+
+              <div className="splash-cont"></div>
+              <div className="next-splash"></div>
+
                 <div id="bg-text-content">
                   <h1>Find your inspiration.</h1>
                   <h3>Join the Flimg community, home to tens of billions of photos and 2 million groups.</h3>
@@ -43,8 +55,7 @@ function App() {
                     <button id="fp-signup-btn">Start for free</button>
                   </NavLink>
                 </div>
-              </div>
-              <ImageScroll />
+            <ImageScroll />
             </div>
           </Route>
         </Switch>

@@ -17,9 +17,17 @@ module.exports = {
         references: { model: 'Albums' },
         type: Sequelize.INTEGER
       },
-      imageUrl: {
+      base64: {
+        allowNull: false,
+        type: Sequelize.TEXT
+      },
+      name: {
         allowNull: false,
         type: Sequelize.STRING(255)
+      },
+      type: {
+        allowNull: false,
+        type: Sequelize.STRING(30)
       },
       content: {
         type: Sequelize.TEXT

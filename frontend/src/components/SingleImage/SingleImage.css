@@ -22,3 +22,8 @@
   font-size: 1rem;
   font-weight: 600;
 }
+
+#single-image-view {
+  max-height: 700px;
+  max-width: 1000px;
+}

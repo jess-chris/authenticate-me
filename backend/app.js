@@ -4,6 +4,7 @@ const cors = require('cors');
 const csurf = require('csurf');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
+const compression = require('compression');
 const { ValidationError } = require('sequelize');
 
 const { environment } = require('./config');
@@ -12,9 +13,11 @@ const isProduction = environment === 'production';
 const routes = require('./routes');
 
 const app = express();
+app.use(compression());
 app.use(morgan('dev'));
 app.use(cookieParser());
-app.use(express.json());
+app.use(express.json({limit: '50mb'}));
+// app.use(express.urlencoded({limit: '50mb'}));
 
 if (!isProduction) {
   // enable cors only in development

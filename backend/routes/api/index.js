@@ -56,16 +56,27 @@ router.get('/images/:id(\\d+)', asyncHandler(async (req, res) => {
 
 router.post('/images', asyncHandler(async (req, res) => {
 
-  const { imageUrl, content, albumId, id} = req.body;
+  const newImages = {};
 
-  const image = await Image.create({
-    userId: id,
-    albumId,
-    imageUrl,
-    content
-  });
+  for (let item in req.body) {
 
-  res.json({ requestBody: "OK", image: image});
+    const { base64, name, type, content, albumId, userId } = req.body[item];
+  
+
+    const image = await Image.create({
+      userId,
+      albumId,
+      base64,
+      name,
+      type,
+      content
+    });
+
+    newImages[name] = image;
+  }
+
+
+  res.json({ requestBody: "OK", images: newImages});
 }));
 
 

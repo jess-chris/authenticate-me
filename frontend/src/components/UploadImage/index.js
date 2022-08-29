@@ -15,29 +15,32 @@ function UploadImage({ sessionUser }) {
 
   const [imageUrl, setImageUrl] = useState("");
   const [content, setContent] = useState("");
-  const [curFileList] = useState([])
+  const [curFileList] = useState([]);
 
-  const validFileTypes = ['image/png', 'image/jpg', 'image/jpeg']
+  const validFileTypes = ['image/png', 'image/jpg', 'image/jpeg'];
 
+
+  const toBase64 = async file => new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = error => reject(error);
+});
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const toBase64 = file => new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = error => reject(error);
-  });
+    const pendingImages = {};
 
-    const newImage = {
-      id,
-      imageUrl,
-      content
-    };
+    for (let x = 0; x < curFileList.length; x++) {
 
-    dispatch(postImage(newImage));
+      const { base64, name, type } = curFileList[x];
+
+      pendingImages[name] = { base64, name, type, userId: id };
+    }
+
+    await dispatch(postImage(pendingImages));
     history.push("/")
   };
 
@@ -46,13 +49,6 @@ function UploadImage({ sessionUser }) {
 
     // e.preventDefault()
     // setImageUrl(e.target.value)
-
-    const toBase64 = async file => new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = error => reject(error);
-  });
 
     const uploadInput = document.querySelector('.upload-input');
     const uploadPreview = document.querySelector('.upload-preview');
@@ -73,7 +69,6 @@ function UploadImage({ sessionUser }) {
       uploadPreview.appendChild(imageList)
       curFileList.push(uploadInput.files[0])
 
-      const imgCode = await toBase64(uploadInput.files[0])
       
       for (let file of curFileList) {
         const listItem = document.createElement('li')
@@ -81,26 +76,31 @@ function UploadImage({ sessionUser }) {
         
         if (validFileTypes.includes(file.type)) {
           // fileText.textContent = `File name: ${file.name}`
+          const imgCode = await toBase64(file);
 
-          const listImage = document.createElement('img')
-          listImage.src = imgCode
+          file['base64'] = imgCode;
 
-          listItem.appendChild(listImage)
+          const listImage = document.createElement('img');
+          listImage.src = imgCode;
+
+          listItem.appendChild(listImage);
           // listItem.appendChild(fileText)
 
         } else {
 
-          fileText.textContent = `File name: ${file.name} - Not a valid file type!`
+          fileText.textContent = `File name: ${file.name} - Not a valid file type!`;
 
-          listItem.appendChild(fileText)
+          listItem.appendChild(fileText);
+
+          curFileList.pop();
         }
 
-        imageList.appendChild(listItem)
+        imageList.appendChild(listItem);
 
       }
     }
 
-    console.log(curFileList)
+    console.log(curFileList);
   }
 
 
@@ -117,7 +117,6 @@ function UploadImage({ sessionUser }) {
           accept=".png, .jpg, .jpeg"
           value={imageUrl}
           onChange={updateImagePreview}
-          required
           multiple
         />
       </label>

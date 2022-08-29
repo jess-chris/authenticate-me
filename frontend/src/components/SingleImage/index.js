@@ -42,7 +42,7 @@ const SingleImage = ({ sessionUser }) => {
 
       <h3>{`By: `}</h3>
 
-      <img src={location.state.imageUrl} />
+      <img id='single-image-view' src={location.state.base64} />
 
       <p>{location.state.content}</p>
 

@@ -2,7 +2,7 @@
   font-family: Proxima Nova,Helvetica,sans-serif;
   margin: 0;
 
-  transition: background-image 1s ease-in-out;
+  /* transition: background-image 1s ease-in-out; */
 }
 
 a {
@@ -30,12 +30,30 @@ body {
 
 } 
 
-.splash-cont {
+.splash {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 120px);
+  width: 100%;
+  position: relative;
+  
+}
+
+.splash-cont, .next-splash {
   background-image: url('https://cdn.pixabay.com/photo/2020/06/01/22/23/eyes-5248678_960_720.jpg');
   background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-repeat: no-repeat; 
+  background-size: cover; 
+  background-size: 100% 100%; 
+  position: absolute;
+  min-height: 100%;
+  min-width: 100%;
 
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
 }
 
 
@@ -43,16 +61,9 @@ ul {
   list-style-type: none;
 }
 
-.splash {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: calc(100vh - 120px);
-  width: 100%;
-  
-}
 
 #bg-text-content {
+  position: absolute;
   max-width: 640px;
   text-align: center;
   color: #fff;

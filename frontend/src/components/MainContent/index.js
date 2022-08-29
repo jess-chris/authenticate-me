@@ -20,10 +20,10 @@ function MainContent() {
   return (
 
     <ul>
-      {images.map(({ id, imageUrl, content, userId}) => (
-        <li key={id}>
-          <NavLink to={{pathname: `/images/${id}`, state:{id, imageUrl, content, userId}}}>
-            <img id={id} src={imageUrl}></img>
+      {images.map(({ id, base64, content, userId}) => (
+        <li key={id+12312}>
+          <NavLink to={{pathname: `/images/${id}`, state:{id, base64, content, userId}}}>
+            <img id={id} src={base64}></img>
           </NavLink>
         </li>
       ))}

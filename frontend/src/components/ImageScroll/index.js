@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 function ImageScroll() {
@@ -5,22 +6,32 @@ function ImageScroll() {
   const imagesObject = useSelector((state) => state.imageState.entries);
   const images = Object.values(imagesObject);
 
-  (function loop(){
-    setTimeout(function() {
-      const splashCont = document.querySelector('.splash-cont');
+  useEffect(() => {
+    loop();
+  });
+
   
-      try {
-        splashCont.style.backgroundImage = `url('${images[Math.floor(Math.random() * images.length) - 1].imageUrl}')`;
-      } catch {}
+  function loop() {
+    let count = 0;
+    const splashCont = document.querySelector('.splash-cont');
+    const nextSplash = document.querySelector('.next-splash');
+    setInterval(function() {
+  
+      if (count === 0) {
+          splashCont.style.backgroundImage = `url('${images[Math.floor(Math.random() * images.length)].base64}')`;
+          splashCont.style.opacity = 1;
+          nextSplash.style.opacity = 0;
+          count++;
+      } else {
+          nextSplash.style.backgroundImage = `url('${images[Math.floor(Math.random() * images.length)].base64}')`;
+          nextSplash.style.opacity = 1;
+          splashCont.style.opacity = 0;
+          count--;
+      }
+   }, 7000);
+  };
 
-      if (!splashCont) return;
-
-       loop();
-   }, 5000);
-  })();
-
-  return(null);
-
+  return(<></>)
 };
 
 

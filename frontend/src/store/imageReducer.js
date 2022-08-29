@@ -1,4 +1,5 @@
 import { csrfFetch } from "./csrf";
+import { gzip } from "pako";
 
 
 const LOAD_IMAGES = 'images/loadImages';
@@ -41,17 +42,23 @@ export const fetchUserImages = async (data) => {
 
 export const postImage = (data) => async dispatch => {
 
+  //const arr = Object.entries(data)
+
+  const zipData = await gzip(JSON.stringify(data));
 
   const res = await csrfFetch('/api/images', {
     method: "POST",
-    headers: {"Content-Type":"application/json"},
-    body: JSON.stringify(data)
+    headers: {
+      'Content-Encoding': 'gzip',
+      "Content-Type":"application/json"
+    },
+    body: zipData
   });
 
-  const newImage = await res.json();
+  const newImages = await res.json();
 
-  dispatch(addImage(newImage));
-  return newImage;
+  dispatch(addImage(newImages));
+  return 'OK';
 };
 
 
@@ -110,7 +117,10 @@ const imageReducer = (state = initialState, action) => {
       newState = {...state};
       newImages = {...state.entries};
 
-      newImages[action.newImage.id] = action.newImage;
+      for (let item in action.newImage) {
+        newImages[item.id] = item;
+      }
+
       newState.entries = newImages;
 
       return newState;

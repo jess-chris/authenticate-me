@@ -10,12 +10,20 @@ module.exports = (sequelize, DataTypes) => {
       references: { model: 'Albums' },
       type: DataTypes.INTEGER
     },
-    imageUrl: {
+    base64: {
+      allowNull: false,
+      type: DataTypes.TEXT
+    },
+    name: {
       allowNull: false,
       type: DataTypes.STRING(255)
     },
+    type: {
+      allowNull: false,
+      type: DataTypes.STRING(30)
+    },
     content: {
-      type: DataTypes.TEXT
+      type: DataTypes.STRING(255)
     }
   }, {});
   Image.associate = function(models) {
