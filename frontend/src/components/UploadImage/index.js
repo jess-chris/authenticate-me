@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { postImage } from "../../store/imageReducer";
 import { useHistory } from "react-router-dom";
 import './UploadImage.css';
 
-function UploadImage({ sessionUser }) {
+function UploadImage() {
 
+  const sessionUser = useSelector(state => state.session.user);
   const { id } = sessionUser;
 
   const dispatch = useDispatch();

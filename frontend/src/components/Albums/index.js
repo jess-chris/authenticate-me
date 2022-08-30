@@ -6,11 +6,13 @@ import { fetchAlbums } from "../../store/albumReducer";
 
 import "./Albums.css";
 
-function Albums({ sessionUser }) {
+function Albums() {
 
 
   const dispatch = useDispatch();
   const history = useHistory();
+
+  const sessionUser = useSelector(state => state.session.user);
 
   if(!sessionUser) history.push("/");
   

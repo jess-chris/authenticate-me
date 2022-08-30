@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { fetchImages, updateImage } from "../../store/imageReducer";
-import { useHistory, useLocation, useParams } from "react-router-dom";
+import { fetchImages } from "../../store/imageReducer";
+import { useHistory, useParams } from "react-router-dom";
 
 import { fetchUserImages } from '../../store/imageReducer';
 import { editAlbum } from '../../store/albumReducer';
 
 import "./EditAlbum.css";
 
-function EditAlbum({ sessionUser }) {
+function EditAlbum() {
   
   const dispatch = useDispatch();
-
   const history = useHistory();
+
+  const sessionUser = useSelector(state => state.session.user);
+
   const [userImages, setUserImages] = useState({});
   const [selectedImages, setSelectedImages] = useState(new Set());
 
@@ -67,9 +69,9 @@ function EditAlbum({ sessionUser }) {
       <form id='edit-album-form' onSubmit={handleSubmit}>
 
         <ul>
-          {userImages.images && userImages.images.map(({ id, imageUrl }) => (
+          {userImages.images && userImages.images.map(({ id, base64 }) => (
             <li id="single-image" key={`album-image-${id}`}>
-              <img id={id} src={imageUrl} />
+              <img id={id} src={base64} />
               <input 
               type="checkbox"
               value={id}

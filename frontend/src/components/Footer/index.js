@@ -2,11 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import './Footer.css';
 
-function Footer({ sessionUser }) {
-
-  const history = useHistory();
-
-  if(!sessionUser) history.push("/");
+function Footer() {
 
   return (
     <footer id='footer'>

@@ -1,17 +1,19 @@
 import React from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import EditImageModal from '../EditImage';
 
 import { deleteImage } from '../../store/imageReducer';
 
 import './SingleImage.css'
 
-const SingleImage = ({ sessionUser }) => {
+const SingleImage = () => {
 
   const location = useLocation();
   const dispatch = useDispatch();
   const history = useHistory();
+
+  const sessionUser = useSelector(state => state.session.user);
 
   if (!sessionUser) history.push("/");
 
@@ -40,7 +42,7 @@ const SingleImage = ({ sessionUser }) => {
   return (
     <div className='fix-height' id='single-image-card'>
 
-      <h3>{`By: `}</h3>
+      <h3>{`By: ${sessionUser.username}`}</h3>
 
       <img id='single-image-view' src={location.state.base64} />
 

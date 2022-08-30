@@ -6,13 +6,15 @@ import { fetchImages } from '../../store/imageReducer';
 
 import "./SingleAlbum.css";
 
-const SingleAlbum = ({ sessionUser }) => {
+const SingleAlbum = () => {
 
   const dispatch = useDispatch();
 
   const location = useLocation();
   const history = useHistory();
   const params = useParams();
+
+  const sessionUser = useSelector(state => state.session.user);
 
   const { id } = params;
   const pathId = id;
@@ -73,11 +75,11 @@ const SingleAlbum = ({ sessionUser }) => {
       )}
 
       <ul>
-        {images && images.map(({ id, imageUrl, content, userId, albumId }) => (
+        {images && images.map(({ id, base64, content, userId, albumId }) => (
           <li key={id}>
-          <NavLink to={{pathname: `/images/${id}`, state:{id, imageUrl, content, userId}}}>
+          <NavLink to={{pathname: `/images/${id}`, state:{id, base64, content, userId}}}>
             {albumId == pathId && ( 
-            <img id={id} src={imageUrl}></img>
+            <img id={id} src={base64}></img>
             )}
           </NavLink>
         </li>

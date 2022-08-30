@@ -13,7 +13,6 @@ function EditImageModal({ state }) {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const [imageUrl, setImageUrl] = useState(state.imageUrl);
   const [content, setContent] = useState(state.content);
 
 
@@ -27,7 +26,6 @@ function EditImageModal({ state }) {
 
     const updatedImage = {
       id,
-      imageUrl,
       content,
       userId
     };
@@ -36,7 +34,7 @@ function EditImageModal({ state }) {
 
     setShowModal(false);
 
-    history.push({pathname:`/images/${updatedImage.id}`, state:{id, userId, imageUrl, content}});
+    history.push({pathname:`/images/${updatedImage.id}`, state:{id, userId, content}});
 
   };
 
@@ -49,7 +47,7 @@ function EditImageModal({ state }) {
             <form id="edit-form" onSubmit={handleSubmit}>
               <h6>Edit image:</h6>
 
-              <label>
+              {/* <label>
                 Image Url:
                 <input
                   type="text"
@@ -58,7 +56,7 @@ function EditImageModal({ state }) {
                   size="50"
                   required
                 />
-              </label>
+              </label> */}
 
               <label>
                 Content:

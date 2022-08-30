@@ -5,9 +5,11 @@ import ProfileButton from '../Navigation/ProfileButton';
 import './NavBar.css';
 import MenuButton from './MenuButton';
 
-function NavBar({ sessionUser }) {
+function NavBar() {
 
   let sessionLinks; 
+
+  const sessionUser = useSelector(state => state.session.user);
   
   if(sessionUser) {
    sessionLinks = (

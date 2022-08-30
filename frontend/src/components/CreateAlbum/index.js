@@ -6,10 +6,12 @@ import { postAlbum, fetchAlbums } from "../../store/albumReducer";
 
 import "./CreateAlbum.css";
 
-function CreateAlbum({ sessionUser }) {
+function CreateAlbum() {
 
   const dispatch = useDispatch();
   const history = useHistory();
+
+  const sessionUser = useSelector(state => state.session.user);
 
   if(!sessionUser) history.push("/");
 

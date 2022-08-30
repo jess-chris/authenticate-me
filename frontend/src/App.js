@@ -65,48 +65,49 @@ function App() {
       {sessionUser && isLoaded && (
         <Switch>
 
+
           <Route exact path="/">
-            <NavBar sessionUser={sessionUser}/>
+            <NavBar />
             <div className="main-content fix-height">
               <MainContent />
             </div>
           </Route>
 
           <Route path="/images/new">
-            <NavBar sessionUser={sessionUser}/>
+            <NavBar />
             <div className="fix-height" id="new-image-card">
-              <UploadImage sessionUser={sessionUser}/>
+              <UploadImage />
             </div>
           </Route>
 
           <Route path='/images/:id'>
-            <NavBar sessionUser={sessionUser}/>
-            <SingleImage sessionUser={sessionUser}/>
+            <NavBar />
+            <SingleImage />
           </Route>
 
           <Route exact path='/albums'>
-            <NavBar sessionUser={sessionUser}/>
+            <NavBar />
             <div className="main-content fix-height">
-              <Albums sessionUser={sessionUser}/>
+              <Albums />
             </div>  
           </Route>
 
           <Route path='/albums/new'>
-            <NavBar sessionUser={sessionUser}/>
+            <NavBar />
             <div className="fix-height" id="new-album-card">
-              <CreateAlbum sessionUser={sessionUser}/>
+              <CreateAlbum />
             </div>  
           </Route>
 
           <Route exact path='/albums/:id'>
-            <NavBar sessionUser={sessionUser}/>
-            <SingleAlbum sessionUser={sessionUser} />
+            <NavBar />
+            <SingleAlbum />
           </Route>
 
           <Route path='/albums/:id/edit'>
-            <NavBar sessionUser={sessionUser}/>
+            <NavBar />
             <div className="main-content fix-height" id="edit-album-card">
-              <EditAlbum sessionUser={sessionUser} />
+              <EditAlbum />
             </div>
           </Route>
 
@@ -128,7 +129,7 @@ function App() {
         </Route>
       </Switch>
 
-      <Footer sessionUser={sessionUser}/>
+      <Footer />
     </>
   );
 }
