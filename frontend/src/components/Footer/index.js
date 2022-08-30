@@ -10,17 +10,13 @@ function Footer({ sessionUser }) {
 
   return (
     <footer id='footer'>
-      <p>About</p>
-      <p>Jobs</p>
-      <p>Blog</p>
-      <p>Devel</p>
-      <p>Guide</p>
-      <p>Help </p>
-      <p>Privacy</p>
-      <p>Terms</p>
-      <p>Cookies</p>
-      <p>English</p>
-      <p>SmugMug+Flimg.</p>
+      <p>NodeJS</p>
+      <p>Express</p>
+      <p>Postgresql</p>
+      <p>Sequelize</p>
+      <p>React</p>
+      <p>Redux </p>
+      <p>Developed by: Jesse Christensen</p>
     </footer>
   );
 }

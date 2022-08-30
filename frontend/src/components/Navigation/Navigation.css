@@ -18,6 +18,7 @@
   justify-content: space-between;
   align-items: center;
 
+  position: absolute;
 }
 
 #splash-demo-btn {
@@ -33,6 +34,10 @@
   padding-right: 1rem;
 
 }
+
+/* #search-bar, #splash-nav-bar {
+  position: fixed;
+} */
 
 #splash-nav-bar a {
   text-decoration: none;

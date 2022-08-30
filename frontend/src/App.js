@@ -41,12 +41,13 @@ function App() {
       {!sessionUser && isLoaded && (
         <Switch>
           <Route exact path="/">
+            
+            <div className="splash-cont"></div>
+            <div className="next-splash"></div>
 
-            <Navigation isLoaded={isLoaded} />
             <div className="splash">
+            <Navigation isLoaded={isLoaded} />
 
-              <div className="splash-cont"></div>
-              <div className="next-splash"></div>
 
                 <div id="bg-text-content">
                   <h1>Find your inspiration.</h1>

@@ -44,7 +44,7 @@ body {
   background-image: url('https://cdn.pixabay.com/photo/2020/06/01/22/23/eyes-5248678_960_720.jpg');
   background-position: 50%;
   background-repeat: no-repeat; 
-  background-size: cover; 
+  /* background-size: cover;  */
   background-size: 100% 100%; 
   position: absolute;
   min-height: 100%;
@@ -54,6 +54,8 @@ body {
   -moz-transition: opacity 1s ease-in-out;
   -o-transition: opacity 1s ease-in-out;
   transition: opacity 1s ease-in-out;
+
+  pointer-events: none;
 }
 
 
